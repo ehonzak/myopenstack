@@ -1,0 +1,134 @@
+    1  cd /
+    2  cd ..
+    3  cd
+    4  nova -h
+    5  nova -h | grep os-auth-url
+    6  nova -h | grep os-tenant-name
+    7  nova -h | grep os-user-name
+    8  nova -h | grep os-password
+    9  nova --os-auth-url=http://192.168.0.10:5000/v2.0 --os-tenant-name=admin --os-user-name=admin --os-password=alta3 --debug flavor-list
+   10  keystonerc_admin
+   11  cat keystonerc_admin
+   12  printenv
+   13  source keystonerc_admin
+   14  printenv
+   15  nova flavor-list
+   16  keystone tenant-create --name temp_tenant
+   17  keystone tenant-list
+   18  openstack
+   19  keystone user-list
+   20  keystone tenant-list
+   21  keystone tenant-list chestercopperpot
+   22  keystone user-get chestercopperpot
+   23  keystone tenant-list
+   24  keystone tenant-get 0164423d1bad41e5bbc0dd67cab14684
+   25  keystone tenant-get vault_tek
+   26  cp keystonerc_admin keystonerc_chestercopperpot
+   27  vi keystonerc_chestercopperpot
+   28  cat keystonerc_chestercopperpot 
+   29  source keystonerc_chestercopperpot 
+   30  pintenc | grep OS_
+   31  printenc | grep OS_
+   32  printenv | grep OS_
+   33  nova flavor-list
+   34  keystone tenant-list
+   35  vim keystonerc_chestercopperpot
+   36  cp keystonerc_chestercopperpot keystonerc_aliceanderson
+   37  vim keystonerc_aliceanderson
+   38  cp keystonerc_aliceanderson keystonerc_bobbarker
+   39  vim keystonerc_bobbarker
+   40  source keystonerc_admin
+   41  keystone user-create --name dorisday --tenant vault_tek --pass fa5tpa55w0rd --email dorisday@vault_tek.example
+   42  vim keystonerc_dorisday
+   43  source keystonerc_dorisday
+   44  nova flavor-list
+   45  curl -s -X POST http://192.168.0.10:5000/v2.0/tokens -H "Content-Type: application/json" -d '{"auth":{"tenantName":"admin","passwordCredentials":{"username":"admin","password":"alta3"}}}' | python -m json.tool | less
+   46  curl -v -X POST http://192.168.0.10:5000/v2.0/tokens -H "Content-Type: application/json" -d '{"auth":{"tenantName":"admin","passwordCredentials":{"username":"admin","password":"alta3"}}}' | less
+   47  curl -v -X POST http://192.168.0.10:5000/v2.0/tokens -H "Content-Type: application/json" -d '{"auth":{"tenantName":"admin","passwordCredentials":{"username":"admin","password":"alta34567"}}}' | python -m json.tool | less
+   48  source keystonerc_admin 
+   49  nova help | less
+   50  nova flavor-list
+   51  nova flavor-create custom.shrimpy 6 512 2 1
+   52  source keystonerc_aliceanderson
+   53  nova flavor-list
+   54  source keystonerc_chestercopperpot 
+   55  nova flavor-list
+   56  nova help flavor-create
+   57  source keystonerc_admin 
+   58  nova flavor-create --is-public false secret.monster 8 125000 200 8
+   59  nova flavor-list
+   60  nova flavor-list --all
+   61  nova help | grep flavor
+   62  nova help flavor-access-add
+   63  keystone user-get admin
+   64  nova flavor-access-add 8 300b2cc45c3846939e589310ae714e46
+   65  nova flavor-list
+   66  keystone user-get
+   67  keystone user-get aliceanderson
+   68  keystone tenant-get 0b8567fc6fb94dc9a852a483aa8acd8d
+   69  keystone tenant-get b39263365f994c0783febae52569474d
+   70  nova flavor-access-add 8 b39263365f994c0783febae52569474d
+   71  nova flavor-list
+   72  source keystonerc_aliceanderson 
+   73  nova flavor-list
+   74  source keystonerc_chestercopperpot
+   75  nova flavor-list
+   76  nova image-list
+   77  neutron net-list
+   78  nova boot --flavor custom.shrimpy --image cirros --nic net-id=20ca30a2-e3fb-4e62-bd78-08dc471e93ed vt1
+   79  keystone help
+   80  keystone tenant-list
+   81  source keystonerc_admin 
+   82  keystone tenant-list
+   83  keystone user-list
+   84  source keystonerc_chestercopperpot 
+   85  nova list
+   86  nova show vt1
+   87  source keystonerc_admin
+   88  noa list --all-tenants
+   89  nova list --all-tenants
+   90  VT1=`nova list --all-tenants | grep vt1 | cut -d ' ' -f 7`
+   91  echo $VT1
+   92  VAR_UUID=$VT1
+   93  nova show $VAR_UUID
+   94  nova list --all-tenants
+   95  VAR_UUID=2a391e31-386e-4bc3-9b4f-a8684c136c57
+   96  nova show $VAR_UUID
+   97  keystone tenant-list
+   98  nova diagnostics $VAR_UUID
+   99  nova meta $VAR_UUID set mtag1='vault_tek box'
+  100  nova show $VAR_UUID
+  101  nova meta $VAR_UUID set mtag2='uh oh I set this tag incorrectly'
+  102  nova show $VAR_UUID
+  103  nova meta $VAR_UUID delete mtag2
+  104  nova show $VAR_UUID
+  105  nova pause $VAR_UUID
+  106  nova show $VAR_UUID
+  107  nova unpause $VAR_UUID
+  108  nova suspend $VAR_UUID
+  109  nova show $VAR_UUID
+  110  nova resume $VAR_UUID
+  111  nova show $VAR_UUID
+  112  nova reboot $VAR_UUID
+  113  nova show $VAR_UUID
+  114  nova reboot $VAR_UUID
+  115  nova show $VAR_UUID
+  116  nova rescue $VAR_UUID
+  117  nova unrescue $VAR_UUID
+  118  nova show $VAR_UUID
+  119  nova rescue $VAR_UUID
+  120  nova show $VAR_UUID
+  121  nova unrescue $VAR_UUID
+  122  nova show $VAR_UUID
+  123  nova unrescue $VAR_UUID
+  124  nova show $VAR_UUID
+  125  nova unrescue $VAR_UUID
+  126  nova show $VAR_UUID
+  127  keystone user-add
+  128  cd myopenstack/
+  129  yum install git
+  130  git config --global user.name "Erich Honzak"
+  131  git config --global user.email "ehonzak@gmail.com"
+  132  git config --list
+  133  git init
+  134  history > history
